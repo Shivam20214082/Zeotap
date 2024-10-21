@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Monitoring System - Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+        }
+        .header a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<div class="header">
+    <h1>Weather Monitoring System</h1>
+    <div>
+        <a href="/" class="btn btn-warning">Home</a>
+        <a href="/logout" class="btn btn-danger">Logout</a> <!-- Logout button -->
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="text-center">Dashboard</h2>
+    
+    <form method="POST" class="mb-4">
+        <div class="form-group">
+            <label for="city">Enter City:</label>
+            <input type="text" class="form-control" id="city" name="city" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Get Weather</button>
+    </form>
+
+    {% if data %}
+        <h3>Weather Data for {{ data.city }}</h3>
+        <ul class="list-group">
+            <li class="list-group-item">Temperature: {{ data.temperature }}°C</li>
+            <li class="list-group-item">Humidity: {{ data.humidity }}%</li>
+            <li class="list-group-item">Condition: {{ data.condition }}</li>
+            <!-- Add more data as needed -->
+        </ul>
+    {% endif %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
